@@ -1,0 +1,33 @@
+version: '3'
+services:
+  db:
+    container_name: postgres_database
+    image: postgres
+    volumes:
+      - ./init-script.sql:/docker-entrypoint-initdb.d/init-script.sql
+    environment:
+      - POSTGRES_PASSWORD=123456
+    ports:
+      - "5432:5432"
+  tasa:
+    container_name: tasa_de_cambio 
+    depends_on:
+      - db      
+    image: tasa_de_cambio:1.0.0
+    ports:
+      - "8084:8084"
+  cuenta:
+    container_name: gestion_cuenta 
+    depends_on:
+      - db
+    image: gestion_cuenta:1.0.0
+    ports:
+      - "8085:8085"    
+  gestion_transaccion:
+    container_name: gestion_transaccion 
+    depends_on:
+      - db
+    image: gestion_transaccion:1.0.0
+    ports:
+      - "8080:8080"        
+        

@@ -1,0 +1,29 @@
+Prerequisitos
+
+docker pull eclipse-temurin:17-jre-alpine
+
+En la consola de docker ejecutar las siguientes paso1
+
+Paso 1
+ docker build  -t tasa_de_cambio:1.0.0 D:\cursoArquitectura\JAR\images\tasa-de-cambio
+Paso 2
+ docker build  -t gestion_cuenta:1.0.0 D:\cursoArquitectura\JAR\images\cuenta
+Paso 3
+ docker build  -t gestion_transaccion:1.0.0 D:\cursoArquitectura\JAR\images\transaccion-cajero-automatico
+Paso 4
+4.1 ir al directorio D:\cursoArquitectura\JAR\cajero-automatico
+	docker compose up
+	
+Paso 5
+Ingresar a las URL
+
+http://localhost:8084/swagger-ui/index.html
+
+http://localhost:8085/swagger-ui/index.html
+
+http://localhost:8080/swagger-ui/index.html
+
+
+Paso 6
+6.1 parar el docker
+	docker compose down
